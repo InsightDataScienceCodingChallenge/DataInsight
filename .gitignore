@@ -1,0 +1,12 @@
+#Virtual_Environments
+venv/
+
+#pycache files
+__pycache__
+
+
+
+
+
+
+
