@@ -84,6 +84,15 @@ def heapify(index: int, drug_cost: List[float]) -> None:
             swap(index,2*index +2,drug_cost)
             heapify(2*index +2,drug_cost)
 
+def type_conversion(data):
+    if data == int(data):
+        return int(data)
+    else:
+        return data
+
+
+
+
 def extract_max(
         drug_cost: List[float],
         drugcost_dict: Dict[str, List[Union[float, int]]],
@@ -123,7 +132,7 @@ def extract_max(
                     fileobj.write('{},{},{}\n'.format(
                         drugs[0],
                         drugmaxcostuniqueid_dict[drugs[0]][1],
-                        drugmaxcostuniqueid_dict[drugs[0]][0]))
+                       type_conversion(drugmaxcostuniqueid_dict[drugs[0]][0])))
                 else:
                     sorted_list = heap_sort(drugs)
                     length = len(sorted_list)
@@ -138,4 +147,5 @@ def extract_max(
                         fileobj.write('{},{},{}\n'.format(
                             first_drug,
                             drugmaxcostuniqueid_dict[first_drug][1],
-                            drugmaxcostuniqueid_dict[first_drug][0]))
+                            type_conversion(
+                                drugmaxcostuniqueid_dict[first_drug][0])))
