@@ -16,4 +16,7 @@ def main() -> None:
 
 
 if __name__ == "__main__":
+    #ARGS = parse_command_line()
+    #input_file_path = ARGS.input_file_path
+    #output_file_path = ARGS.output_file_path
     main()
