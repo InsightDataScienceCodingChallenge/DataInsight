@@ -21,14 +21,35 @@ To generate a list of all drugs, the total number of UNIQUE individuals who pres
 
 ## Execution detials
 
-* Run shell script run.sh which will execute python main.py
+* Run shell script run.sh which will execute python main.py and create the outputtxt file in the output folder(./output/top_cost_drug.txt)
 
 ## Test Cases
 
-* 
+* In the insight_test_suite folder created the test cases and verified with expected output.Below is the test case result:
 
 ```
 [PASS]: test_1 top_cost_drug.txt[PASS]: your-own-test_1 top_cost_drug.txt[Tue
 
  Jul 17 09:29:03 EDT 2018] 2 of 2 tests passed
 ```
+## Commands to be executed:
+* In the Directory structure,execute the following below command to get the output in output folder.
+
+./run.sh
+
+* Path to Input-text file:
+
+./input/itcont.txt
+
+* Path to Output-text file:
+
+./output/top_cost_drug.txt
+
+* For the test cases: Traverse to the below location in the directory structure:
+
+./insight_testsuite/
+
+* and execute the following command:
+
+./run_tests.sh
+
