@@ -22,3 +22,13 @@ To generate a list of all drugs, the total number of UNIQUE individuals who pres
 ## Execution detials
 
 * Run shell script run.sh which will execute python main.py
+
+## Test Cases
+
+* 
+
+```
+[PASS]: test_1 top_cost_drug.txt[PASS]: your-own-test_1 top_cost_drug.txt[Tue
+
+ Jul 17 09:29:03 EDT 2018] 2 of 2 tests passed
+```
