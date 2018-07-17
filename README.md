@@ -1,6 +1,6 @@
 # Insight Coding Challenge
 
-Author: Anvesh Kumar Perugu
+### Author: Anvesh Kumar Perugu
 
 ## Challenge
 To generate a list of all drugs, the total number of UNIQUE individuals who prescribed the medication, and the total drug cost, which must be listed in descending order based on the total drug cost and if there is a tie, drug name.
@@ -9,7 +9,7 @@ To generate a list of all drugs, the total number of UNIQUE individuals who pres
 
 * Programming Language: Python
 * Version: 3.6
-* Sortin Algorithm: Heap Sort
+* Sorting Algorithm: Heap Sort
 * Type Checking: mypy
 
 ## Algorithm
