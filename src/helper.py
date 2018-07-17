@@ -17,13 +17,13 @@ def get_drugcostuniqueid(
         drugln_dict = defaultdict(dict)
         for row in csv.reader(fileobj):
             if len(drugcost_dict[row[3]]) == 0:
-                drugcost_dict[row[3]].append(int(row[4]))
+                drugcost_dict[row[3]].append(float(row[4]))
                 drugcost_dict[row[3]].append(1)
                 drugln_dict[row[3]][row[1]] = [row[2]]
             else:
                 drugcost_dict[row[3]][0] = round(
                     drugcost_dict[row[3]][0]
-                    + int(row[4]),2
+                    + float(row[4]),2
                 )
                 if row[1] not in drugln_dict[row[3]]:
                     drugln_dict[row[3]].clear()
