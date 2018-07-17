@@ -1,5 +1,9 @@
 '''helper functions for main module'''
 
+import csv
+from collections import defaultdict
+from typing import Dict, Union, List
+
 def get_drugcostuniqueid(
         input_filepath: str
 ) -> Dict[str, List[Union[float, str]]]:
@@ -8,6 +12,7 @@ def get_drugcostuniqueid(
    :param input_filepath: path to input file
     '''
     with open(input_filepath,'r') as fileobj:
+        next(fileobj)
         drugcost_dict = defaultdict(list)
         drugln_dict = defaultdict(dict)
         for row in csv.reader(fileobj):
@@ -91,50 +96,46 @@ def extract_max(
     :param drug_cost: list of total cost by drug name post building Max heap
     :param drugcost_dict: dict of drugs with total_cost and count of UniqueID
     '''
-    total_length = len(drug_cost)
-    unique_drugcost = []
-    for i in range(total_length):
-        if i < total_length -1:
-            max_cost = drug_cost[0]
-            swap(0, -1, drug_cost)
-            del drug_cost[-1]
-            heapify(0,drug_cost)
-        else:
-            max_cost = drug_cost[0]
-        if max_cost not in unique_drugcost:
-            unique_drugcost.append(max_cost)
-            drugmaxcostuniqueid_dict = {}
-            drugs = []
-            for j in drugcost_dict:
-                if drugcost_dict[j][0] == max_cost:
-                    drugmaxcostuniqueid_dict[j] = [drugcost_dict[j][0],
-                                                   drugcost_dict[j][1]]
-                    drugs.append(j)
-            if len(drugs) == 1:
-                with open(outputfile_path, 'a') as fileobj:
-                    fileobj.write('{},{},{}\n'.format(drugs[0],
-                                                drugmaxcostuniqueid_dict[
-                                                    drugs[0]][1],
-                                                drugmaxcostuniqueid_dict[
-                                                    drugs[0]][0]
-                                                )
-                            )
+    with open(outputfile_path, 'w') as fileobj:
+        fileobj.write('{},{},{}\n'.format('drug_name',
+                                          'num_prescriber',
+                                          'total_cost'))
+        total_length = len(drug_cost)
+        unique_drugcost = []
+        for i in range(total_length):
+            if i < total_length -1:
+                max_cost = drug_cost[0]
+                swap(0, -1, drug_cost)
+                del drug_cost[-1]
+                heapify(0,drug_cost)
             else:
-                sorted_list = heap_sort(drugs)
-                length = len(sorted_list)
-                for i in range(length):
-                    if i < length -1:
-                        first_drug = sorted_list[0]
-                        swap(0,-1,sorted_list)
-                        del sorted_list[-1]
-                        heapify(0,sorted_list)
-                    else:
-                        first_drug = sorted_list[0]
-                    with open(outputfile_path, 'a') as fileobj:
-                        fileobj.write('{},{},{}\n'.format(first_drug,
-                                                    drugmaxcostuniqueid_dict[
-                                                        first_drug][1],
-                                                    drugmaxcostuniqueid_dict[
-                                                        first_drug][0]
-                                                    )
-                                )
+                max_cost = drug_cost[0]
+            if max_cost not in unique_drugcost:
+                unique_drugcost.append(max_cost)
+                drugmaxcostuniqueid_dict = {}
+                drugs = []
+                for j in drugcost_dict:
+                    if drugcost_dict[j][0] == max_cost:
+                        drugmaxcostuniqueid_dict[j] = [drugcost_dict[j][0],
+                                                       drugcost_dict[j][1]]
+                        drugs.append(j)
+                if len(drugs) == 1:
+                    fileobj.write('{},{},{}\n'.format(
+                        drugs[0],
+                        drugmaxcostuniqueid_dict[drugs[0]][1],
+                        drugmaxcostuniqueid_dict[drugs[0]][0]))
+                else:
+                    sorted_list = heap_sort(drugs)
+                    length = len(sorted_list)
+                    for i in range(length):
+                        if i < length -1:
+                            first_drug = sorted_list[0]
+                            swap(0,-1,sorted_list)
+                            del sorted_list[-1]
+                            heapify(0,sorted_list)
+                        else:
+                            first_drug = sorted_list[0]
+                        fileobj.write('{},{},{}\n'.format(
+                            first_drug,
+                            drugmaxcostuniqueid_dict[first_drug][1],
+                            drugmaxcostuniqueid_dict[first_drug][0]))
