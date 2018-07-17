@@ -27,6 +27,13 @@ To generate a list of all drugs, the total number of UNIQUE individuals who pres
 
 * In the insight_test_suite folder created the test cases and verified with expected output.Below is the test case result:
 
+* In the large text input file we do have all the float values but not in case of test file. Converted int values to float     value to verify the test case. The value is same but there is change datatype.
+
+example:
+
+200 and 200.0
+
+* Below is the result of test case:
 ```
 [PASS]: test_1 top_cost_drug.txt[PASS]: your-own-test_1 top_cost_drug.txt[Tue
 
@@ -35,21 +42,21 @@ To generate a list of all drugs, the total number of UNIQUE individuals who pres
 ## Commands to be executed:
 * In the Directory structure,execute the following below command to get the output in output folder.
 
-./run.sh
+    ./run.sh
 
 * Path to Input-text file:
 
-./input/itcont.txt
+    ./input/itcont.txt
 
 * Path to Output-text file:
 
-./output/top_cost_drug.txt
+    ./output/top_cost_drug.txt
 
 * For the test cases: Traverse to the below location in the directory structure:
 
-./insight_testsuite/
-
+    ./insight_testsuite/
+  
 * and execute the following command:
 
-./run_tests.sh
+    ./run_tests.sh
 
