@@ -27,12 +27,6 @@ To generate a list of all drugs, the total number of UNIQUE individuals who pres
 
 * In the insight_test_suite folder created the test cases and verified with expected output.Below is the test case result:
 
-* In the large text input file we do have all the float values but not in case of test file. Converted int values to float     value to verify the test case. The value is same but there is change datatype.
-
-example:
-
-200 and 200.0
-
 * Below is the result of test case:
 ```
 [PASS]: test_1 top_cost_drug.txt[PASS]: your-own-test_1 top_cost_drug.txt[Tue
